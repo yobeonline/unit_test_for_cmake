@@ -1,0 +1,48 @@
+function(EXPECT_STREQ expected)
+	if (NOT "${expected}" STREQUAL "${ARGN}")
+		message (SEND_ERROR "Expected \"${expected}\" but had \"${ARGN}\".")
+	endif()
+endfunction()
+
+function(ASSERT_STREQ expected)
+	if (NOT "${expected}" STREQUAL "${ARGN}")
+		message (FATAL_ERROR "Expected \"${expected}\" but had \"${ARGN}\".")
+	endif()
+endfunction()
+
+function(EXPECT_STRNEQ expected)
+	if ("${expected}" STREQUAL "${ARGN}")
+		message (SEND_ERROR "Expected anything other than \"${expected}\"..")
+	endif()
+endfunction()
+
+function(ASSERT_STRNEQ expected)
+	if ("${expected}" STREQUAL "${ARGN}")
+		message (FATAL_ERROR "Expected anything other than \"${expected}\".")
+	endif()
+endfunction()
+
+function(EXPECT_EMPTY)
+	if (NOT "${ARGN}" STREQUAL "")
+		message (SEND_ERROR "Expected an empty string but had \"${ARGN}\".")
+	endif()
+endfunction()
+
+function(ASSERT_EMPTY)
+	if (NOT "${ARGN}" STREQUAL "")
+		message (FATAL_ERROR "Expected an empty string but had \"${ARGN}\".")
+	endif()
+endfunction()
+
+function(EXPECT_NOT_EMPTY)
+	if ("${ARGN}" STREQUAL "")
+		message (SEND_ERROR "Expected a non empty string.")
+	endif()
+endfunction()
+
+function(ASSERT_NOT_EMPTY)
+	if ("${ARGN}" STREQUAL "")
+		message (FATAL_ERROR "Expected a non empty string.")
+	endif()
+endfunction()
+
